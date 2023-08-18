@@ -1,6 +1,6 @@
+using System.Reflection;
 using API.Extensions;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Persistencia;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.ConfigureCors(); //Configura las Cors para los Endpoint
+builder.Services.AddAplicacionServices(); //definir las interfaces y repositorios
+builder.Services.AddAutoMapper(Assembly.GetEntryAssembly()); //habilitar el AutoMapper
 
 //crear la conexion a la base de datos 
 builder.Services.AddDbContext<AppAdministraPeticionesContext>(optionsBuilder =>
@@ -55,3 +57,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+//server = 192.168.128.209; user = apolo; password = Apo1oC@mp3r;
+//server = localhost; user = root; password = 123456789;
+//dotnet add package Microsoft.EntityFrameworkCore --version 7.0.10

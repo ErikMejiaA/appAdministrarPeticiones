@@ -1,4 +1,7 @@
 
+using Aplicacion.UnitOfWork;
+using Dominio.Interfaces;
+
 namespace API.Extensions;
 
 public static class ApplicationServiceExtension
@@ -14,5 +17,12 @@ public static class ApplicationServiceExtension
 
         }
     );
+
+    public static void AddAplicacionServices(this IServiceCollection services)
+    {
+        //services.AddScoped<IEstadoInterface, EstadoRepository>();
+        services.AddScoped<IUnitOfWorkInterface, UnitOfWork>();
+    }
+
         
 }

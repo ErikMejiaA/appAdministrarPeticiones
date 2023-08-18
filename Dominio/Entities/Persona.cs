@@ -4,7 +4,7 @@ namespace Dominio.Entities;
 public class Persona : BaseEntityA
 {
     public string ? NombrePersona { get; set; }
-
+    
     //llaves foraneas 
     public int IdGeneroFk { get; set; }
     public string ? IdCiudadFk { get; set; }
