@@ -36,7 +36,6 @@ public class AppAdministraPeticionesContext : DbContext
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 
-
     internal void SaveAsync()
     {
         throw new NotImplementedException();

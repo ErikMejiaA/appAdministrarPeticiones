@@ -1,6 +1,7 @@
 using System.Reflection;
 using API.Extensions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Persistencia;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,15 +38,15 @@ using (var scope = app.Services.CreateScope())
    var services = scope.ServiceProvider;
    var loggerFactory = services.GetRequiredService<ILoggerFactory>();
    try
-   {
-       var context = services.GetRequiredService<AppAdministraPeticionesContext>();
-       await context.Database.MigrateAsync();
-   }
-   catch (Exception ex)
-   {
-       var logger = loggerFactory.CreateLogger<Program>();
-       logger.LogError(ex, "Ocurrió un error durante la migración");
-   }
+    {
+        var context = services.GetRequiredService<AppAdministraPeticionesContext>();
+        await context.Database.MigrateAsync();
+    }
+    catch (Exception ex)
+    {
+        var logger = loggerFactory.CreateLogger<Program>();
+        logger.LogError(ex, "Ocurrió un error durante la migración");
+    }
 }
 
 app.UseCors("CorsPolicy");

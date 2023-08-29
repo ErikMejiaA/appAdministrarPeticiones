@@ -14,8 +14,7 @@ public class PersonaConfiguration : IEntityTypeConfiguration<Persona>
         builder.ToTable("Personas");
 
         builder.Property(p => p.IdCodigo)
-        .IsRequired()
-        .HasMaxLength(20);
+        .IsRequired();
 
         builder.HasIndex(p => p.IdCodigo)
         .IsUnique();
@@ -23,6 +22,27 @@ public class PersonaConfiguration : IEntityTypeConfiguration<Persona>
         builder.Property(p => p.NombrePersona)
         .IsRequired()
         .HasMaxLength(50);
+
+        builder.Property(p => p.ApellidoPaterno)
+        .IsRequired()
+        .HasMaxLength(50);
+
+        builder.Property(p => p.ApellidoMaterno)
+        .IsRequired()
+        .HasMaxLength(50);
+
+        builder.Property(p => p.UserName)
+        .IsRequired()
+        .HasMaxLength(50);
+
+        builder.Property(p => p.Email)
+        .IsRequired()
+        .HasMaxLength(50);
+
+        builder.Property(p => p.Password)
+        .IsRequired()
+        .HasMaxLength(50);
+
 
         //definimos las llaves foraneas 
         builder.HasOne(p => p.Genero)
@@ -40,6 +60,26 @@ public class PersonaConfiguration : IEntityTypeConfiguration<Persona>
         .HasForeignKey( p => p.IdTipoPerFk)
         .IsRequired();
 
+
+        builder
+        .HasMany(p => p.Roles)
+        .WithMany(p => p.Personas)
+        .UsingEntity<PersonaRoles> (
+            j => j
+                .HasOne(p => p.Rol)
+                .WithMany(p => p.PersonaRoles)
+                .HasForeignKey(p => p.RolId),
+
+            j => j
+                .HasOne(p => p.Persona)
+                .WithMany(p => p.PersonaRoles)
+                .HasForeignKey(p => p.PersonaId),
+
+            j => 
+                {
+                    j.HasKey(p => new { p.PersonaId, p.RolId});
+                }
+        );
 
     }
 }
