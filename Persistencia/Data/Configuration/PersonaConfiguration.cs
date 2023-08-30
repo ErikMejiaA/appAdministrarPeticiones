@@ -60,7 +60,7 @@ public class PersonaConfiguration : IEntityTypeConfiguration<Persona>
         .HasForeignKey( p => p.IdTipoPerFk)
         .IsRequired();
 
-
+        //se define la configuracion de la entidad PersonaRoles
         builder
         .HasMany(p => p.Roles)
         .WithMany(p => p.Personas)

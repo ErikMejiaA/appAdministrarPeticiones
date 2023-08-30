@@ -1,7 +1,7 @@
 using Dominio.Entities;
 
 namespace Dominio.Interfaces;
-public interface IRoleInterface : IGenericInterfaceA<Rol>
+public interface IRolInterface : IGenericInterfaceB<Rol>
 {
     //implementar nuevos metodos 
         

@@ -13,9 +13,6 @@ public class RolConfiguration : IEntityTypeConfiguration<Rol>
         builder.Property(p => p.IdCodigo)
         .IsRequired();
 
-        builder.HasIndex(p => p.IdCodigo)
-        .IsUnique();
-
         builder.Property(p => p.Nombre)
         .IsRequired()
         .HasMaxLength(200);

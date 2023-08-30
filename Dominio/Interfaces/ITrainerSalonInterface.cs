@@ -6,7 +6,7 @@ namespace Dominio.Interfaces;
 
 public interface ITrainerSalonInterface
 {
-    Task<TrainerSalon> GetByIdAsync(string idTra, int idSa);
+    Task<TrainerSalon> GetByIdAsync(int idTra, int idSa);
     Task<IEnumerable<TrainerSalon>> GetAllAsync();
     IEnumerable<TrainerSalon> Find(Expression<Func<TrainerSalon, bool>> expression);
     Task<(int totalRegistros, IEnumerable<TrainerSalon> registros)> GetAllAsync(int pageIndex, int pageSize, string search);

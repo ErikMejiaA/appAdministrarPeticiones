@@ -50,7 +50,7 @@ public class TrainerSalonRepository : ITrainerSalonInterface
         return (totalRegistros, registros);
     }
 
-    public async Task<TrainerSalon> GetByIdAsync(string idTra, int idSa)
+    public async Task<TrainerSalon> GetByIdAsync(int idTra, int idSa)
     {
         return await _context.Set<TrainerSalon>().FirstOrDefaultAsync(p => (p.IdPerTrainerFk == idTra && p.IdSalonFk == idSa));
     }

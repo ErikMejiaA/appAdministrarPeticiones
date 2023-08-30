@@ -5,7 +5,7 @@ using Persistencia;
 
 namespace Aplicacion.Repository;
 
-public class PersonaRepository : GenericRepositoryA<Persona>, IPersonaInterface
+public class PersonaRepository : GenericRepositoryB<Persona>, IPersonaInterface
 {
     private readonly AppAdministraPeticionesContext _context;
 
@@ -13,7 +13,8 @@ public class PersonaRepository : GenericRepositoryA<Persona>, IPersonaInterface
     {
         _context = context;
     }
-
-    //aqui van otros tipos de metodos a implementar (override  sobre escribir funciones)
     
+    //aqui van otros tipos de metodos a implementar (override  sobre escribir funciones)
+
+
 }

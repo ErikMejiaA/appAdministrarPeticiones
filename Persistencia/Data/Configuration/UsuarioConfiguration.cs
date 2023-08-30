@@ -20,11 +20,6 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
         builder.Property(p => p.Email)
         .IsRequired()
         .HasMaxLength(200);
-
-        builder.Property(p => p.Password)
-        .IsRequired()
-        .HasMaxLength(50);
-
         
         builder.HasIndex(p => p.Username)
         .IsUnique();
@@ -32,6 +27,7 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
         builder.HasIndex(p => p.Email)
         .IsUnique();
 
+        //se define la configuracion de la entidad UsuariosRoles
         builder
         .HasMany(p => p.Roles)
         .WithMany(p => p.Usuarios)

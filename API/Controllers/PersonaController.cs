@@ -38,7 +38,7 @@ public class PersonaController : BaseApiController
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<PersonaDto>> Get(string id)
+    public async Task<ActionResult<PersonaDto>> Get(int id)
     {
         var persona = await _UnitOfWork.Personas.GetByIdAsync(id);
         if (persona == null) {
@@ -69,7 +69,7 @@ public class PersonaController : BaseApiController
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<PersonaDto>> Put(string id, [FromBody]PersonaDto personaDto)
+    public async Task<ActionResult<PersonaDto>> Put(int id, [FromBody]PersonaDto personaDto)
     {
         var persona = this.mapper.Map<Persona>(personaDto);
         if (persona == null) {
@@ -87,7 +87,7 @@ public class PersonaController : BaseApiController
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
 
-    public async Task<ActionResult> Delete(string id)
+    public async Task<ActionResult> Delete(int id)
     {
         var persona = await _UnitOfWork.Personas.GetByIdAsync(id);
         if (persona == null) {

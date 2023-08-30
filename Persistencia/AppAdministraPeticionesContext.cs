@@ -24,6 +24,10 @@ public class AppAdministraPeticionesContext : DbContext
     public DbSet<TipoPersona> ? TipoPersonas { get; set; }
     public DbSet<TrainerSalon> ? TrainerSalones { get; set; }
     public DbSet<Direccion> ? Direcciones { get; set; }
+    public DbSet<Usuario> ? Usuarios { get; set; }
+    public DbSet<Rol> ? Roles { get; set; }
+    public DbSet<PersonaRoles> ? PersonaRoles { get; set; }
+    public DbSet<UsuariosRoles> ? UsuariosRoles { get; set; }
 
 
     //metodo para cargar de forma automatica las entidades y configuraciones de estas en la base de datos creada

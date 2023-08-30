@@ -21,6 +21,10 @@ public class UnitOfWork : IUnitOfWorkInterface, IDisposable
     private SalonRepository ? _salones;
     private TipoPersonaRepository ? _tipoPersonas;
     private TrainerSalonRepository ? _trainerSalones;
+    private PersonaRolesRepository ? _personaRoles;
+    private UsuarioRepository ? _usuarios;
+    private RolRepository ? _roles;
+    private UsuariosRolesRepository ? _usuariosRoles;
 
     public UnitOfWork(AppAdministraPeticionesContext context)
     {
@@ -136,6 +140,50 @@ public class UnitOfWork : IUnitOfWorkInterface, IDisposable
                 _trainerSalones = new TrainerSalonRepository(_context);
             }
             return _trainerSalones;
+        }
+    }
+
+    public IRolInterface Roles
+    {
+        get
+        {
+            if (_roles == null) {
+                _roles = new RolRepository(_context);
+            }
+            return _roles;
+        }
+    }
+
+    public IPersonaRolesInterface PersonaRoles
+    {
+        get
+        {
+            if (_personaRoles == null) {
+                _personaRoles = new PersonaRolesRepository(_context);
+            }
+            return _personaRoles;
+        }
+    }
+
+    public IUsuarioInterface Usuarios
+    {
+        get
+        {
+            if (_usuarios == null) {
+                _usuarios = new UsuarioRepository(_context);
+            }
+            return _usuarios;
+        }
+    }
+
+    public IUsuariosRolesInterface UsuariosRoles
+    {
+        get
+        {
+            if (_usuariosRoles == null) {
+                _usuariosRoles = new UsuariosRolesRepository(_context);
+            }
+            return _usuariosRoles;
         }
     }
 

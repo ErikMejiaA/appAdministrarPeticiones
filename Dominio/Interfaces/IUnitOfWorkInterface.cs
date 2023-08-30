@@ -11,9 +11,14 @@ namespace Dominio.Interfaces;
         IMatriculaInterface Matriculas { get; }
         IPaisInterface Paises { get; }
         IPersonaInterface Personas { get; }
+        IRolInterface Roles { get; }
         ISalonInterface Salones { get; }
         ITipoPersonaInterface TipoPersonas { get; }
+        IPersonaRolesInterface PersonaRoles { get; }
         ITrainerSalonInterface TrainerSalones { get; }
+        IUsuarioInterface Usuarios { get; }
+        IUsuariosRolesInterface UsuariosRoles { get; }
+        
 
         Task<int> SaveAsync();
     }

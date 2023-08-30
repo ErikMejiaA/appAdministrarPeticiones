@@ -38,7 +38,7 @@ public class TrainerSalonController : BaseApiController
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<TrainerSalonDto>> Get(string idTra, int idSa)
+    public async Task<ActionResult<TrainerSalonDto>> Get(int idTra, int idSa)
     {
         var trainerSalon = await _UnitOfWork.TrainerSalones.GetByIdAsync(idTra, idSa);
         if (trainerSalon == null)
@@ -71,7 +71,7 @@ public class TrainerSalonController : BaseApiController
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<TrainerSalonDto>> Put(string idTra, int idSa, [FromBody] TrainerSalonDto trainerSalonDto)
+    public async Task<ActionResult<TrainerSalonDto>> Put(int idTra, int idSa, [FromBody] TrainerSalonDto trainerSalonDto)
     {
         var trainerSalon = this.mapper.Map<TrainerSalon>(trainerSalonDto);
         if (trainerSalon == null)
@@ -91,7 +91,7 @@ public class TrainerSalonController : BaseApiController
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
 
-    public async Task<ActionResult> Delete(string idTra, int idSa)
+    public async Task<ActionResult> Delete(int idTra, int idSa)
     {
         var trainerSalon = await _UnitOfWork.TrainerSalones.GetByIdAsync(idTra, idSa);
         if (trainerSalon == null)

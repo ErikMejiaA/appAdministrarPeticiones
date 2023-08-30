@@ -12,7 +12,7 @@ public class Direccion : BaseEntityB
     public string ? SufijoCards { get; set; }
 
     //definimos las llaves foranes
-    public string ? IdPersonaFk { get; set; }
+    public int ? IdPersonaFk { get; set; }
 
     //definimos una referencia 
     public Persona ? Persona { get; set; }
