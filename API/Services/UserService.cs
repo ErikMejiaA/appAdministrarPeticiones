@@ -138,9 +138,9 @@ public class UserService : IUserServiceInterface
 
     }
 
-    // los siguientes metodos no hacen parte de la Interfaz
+    // los siguientes metodos no hacen parte de la Interfaz no son necesarios
 
-    private JwtSecurityToken CreateJwtToken(Usuario usuario)
+    /*private JwtSecurityToken CreateJwtToken(Usuario usuario)
     {
         var roles = usuario.Roles;
         var roleClaims = new List<Claim>();
@@ -180,6 +180,6 @@ public class UserService : IUserServiceInterface
             return model;
         }
         return null;
-    }
+    }*/
 
 }

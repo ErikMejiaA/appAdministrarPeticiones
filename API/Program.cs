@@ -1,7 +1,9 @@
 using System.Reflection;
+using System.Text;
 using API.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Persistencia;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.ConfigureCors(); //Configura las Cors para los Endpoint
-builder.Services.AddAplicacionServices(); //definir las interfaces y repositorios
+builder.Services.AddApplicationServices(); //definir las interfaces y repositorios
 builder.Services.AddAutoMapper(Assembly.GetEntryAssembly()); //habilitar el AutoMapper
 
 //crear la conexion a la base de datos 
@@ -53,7 +55,9 @@ app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
 
+
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllers();
 
@@ -62,3 +66,4 @@ app.Run();
 //server = 192.168.128.209; user = apolo; password = Apo1oC@mp3r;
 //server = localhost; user = root; password = 123456789;
 //dotnet add package Microsoft.EntityFrameworkCore --version 7.0.10
+//dotnet add package System.IdentityModel.Tokens.Jwt --version 6.32.2
