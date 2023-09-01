@@ -3,7 +3,6 @@ using System.Security.Claims;
 using System.Text;
 using API.Dtos;
 using API.Helpers;
-using Aplicacion.Contratos;
 using Dominio.Entities;
 using Dominio.Interfaces;
 using Microsoft.AspNetCore.Identity;
@@ -16,14 +15,12 @@ public class UserService : IUserServiceInterface
     private readonly JWT ? _jwt;
     private readonly IUnitOfWorkInterface ? _unitOfWork;
     private readonly IPasswordHasher<Usuario> ? _passwordHasher;
-    private readonly IJwtGeneradorInterface ? _jwtGenerador;
 
-    public UserService(IUnitOfWorkInterface unitOfWork, IOptions<JWT> jwt, IPasswordHasher<Usuario> passwordHasher, IJwtGeneradorInterface jwtGenerador)
+    public UserService(IUnitOfWorkInterface unitOfWork, IOptions<JWT> jwt, IPasswordHasher<Usuario> passwordHasher)
     {
         _jwt = jwt.Value;
         _unitOfWork = unitOfWork;
         _passwordHasher = passwordHasher;
-        _jwtGenerador = jwtGenerador;
     }
 
     public async Task<string> RegisterAsync(RegisterDto registerDto)
@@ -124,14 +121,14 @@ public class UserService : IUserServiceInterface
         {
             datosUsuarioDto.Mensaje = "OK";
             datosUsuarioDto.EstaAutenticado = true;
-            //JwtSecurityToken jwtSecurityToken = CreateJwtToken(usuario);
-            //datosUsuarioDto.Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
+            JwtSecurityToken jwtSecurityToken = CreateJwtToken(usuario);
+            datosUsuarioDto.Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
             datosUsuarioDto.UserName = usuario.Username;
             datosUsuarioDto.Email = usuario.Email;
-            datosUsuarioDto.Token = _jwtGenerador.CrearToken(usuario);
-            /*datosUsuarioDto.Roles = usuario.Roles
+            //datosUsuarioDto.Token = _jwtGenerador.CrearToken(usuario);
+            datosUsuarioDto.Roles = usuario.Roles
                                                 .Select(p => p.Nombre)
-                                                .ToList();*/
+                                                .ToList();
            
             
             return datosUsuarioDto; 
@@ -146,7 +143,7 @@ public class UserService : IUserServiceInterface
 
     // los siguientes metodos no hacen parte de la Interfaz no son necesarios
 
-    /*private JwtSecurityToken CreateJwtToken(Usuario usuario)
+    private JwtSecurityToken CreateJwtToken(Usuario usuario)
     {
         var roles = usuario.Roles;
         var roleClaims = new List<Claim>();
@@ -174,7 +171,7 @@ public class UserService : IUserServiceInterface
             signingCredentials : signingCredentials);
 
         return JwtSecurityToken;
-    }*/
+    }
 
     /*public async Task<LoginDto>  UserLogin(LoginDto model)
     {

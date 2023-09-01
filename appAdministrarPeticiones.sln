@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aplicacion", "Aplicacion\Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{7FF3D0C9-FB16-4E38-8149-14D454BCCB12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seguridad", "Seguridad\Seguridad.csproj", "{6383CED2-CCD4-4B55-A943-E6E7AAB7C144}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,9 +36,5 @@ Global
 		{7FF3D0C9-FB16-4E38-8149-14D454BCCB12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FF3D0C9-FB16-4E38-8149-14D454BCCB12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FF3D0C9-FB16-4E38-8149-14D454BCCB12}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6383CED2-CCD4-4B55-A943-E6E7AAB7C144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6383CED2-CCD4-4B55-A943-E6E7AAB7C144}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6383CED2-CCD4-4B55-A943-E6E7AAB7C144}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6383CED2-CCD4-4B55-A943-E6E7AAB7C144}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

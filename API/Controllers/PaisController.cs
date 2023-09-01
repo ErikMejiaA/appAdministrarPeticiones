@@ -36,6 +36,7 @@ public class PaisController : BaseApiController
 
     //METODO GET POR ID (buscar un registro por id)
     [HttpGet("{id}")]
+    [Authorize(Roles = "Administrador, Empleado")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

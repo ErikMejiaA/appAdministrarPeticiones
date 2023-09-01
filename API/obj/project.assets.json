@@ -1907,20 +1907,6 @@
         "runtime": {
           "bin/placeholder/Persistencia.dll": {}
         }
-      },
-      "Seguridad/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "Aplicacion": "1.0.0",
-          "System.IdentityModel.Tokens.Jwt": "6.32.2"
-        },
-        "compile": {
-          "bin/placeholder/Seguridad.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Seguridad.dll": {}
-        }
       }
     }
   },
@@ -6036,11 +6022,6 @@
       "type": "project",
       "path": "../Persistencia/Persistencia.csproj",
       "msbuildProject": "../Persistencia/Persistencia.csproj"
-    },
-    "Seguridad/1.0.0": {
-      "type": "project",
-      "path": "../Seguridad/Seguridad.csproj",
-      "msbuildProject": "../Seguridad/Seguridad.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6052,8 +6033,8 @@
       "Microsoft.EntityFrameworkCore >= 7.0.10",
       "Microsoft.EntityFrameworkCore.Analyzers >= 7.0.10",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.10",
-      "Seguridad >= 1.0.0",
-      "Swashbuckle.AspNetCore >= 6.5.0"
+      "Swashbuckle.AspNetCore >= 6.5.0",
+      "System.IdentityModel.Tokens.Jwt >= 6.32.2"
     ]
   },
   "packageFolders": {
@@ -6084,9 +6065,6 @@
           "projectReferences": {
             "C:\\Users\\Usuario\\Desktop\\appAdministrarPeticiones\\Aplicacion\\Aplicacion.csproj": {
               "projectPath": "C:\\Users\\Usuario\\Desktop\\appAdministrarPeticiones\\Aplicacion\\Aplicacion.csproj"
-            },
-            "C:\\Users\\Usuario\\Desktop\\appAdministrarPeticiones\\Seguridad\\Seguridad.csproj": {
-              "projectPath": "C:\\Users\\Usuario\\Desktop\\appAdministrarPeticiones\\Seguridad\\Seguridad.csproj"
             }
           }
         }
@@ -6130,6 +6108,10 @@
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.5.0, )"
+          },
+          "System.IdentityModel.Tokens.Jwt": {
+            "target": "Package",
+            "version": "[6.32.2, )"
           }
         },
         "imports": [

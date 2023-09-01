@@ -5,11 +5,12 @@ public class Autorizacion
     {
         Administrador,
         Gerente,
-        Empleado
+        Empleado,
+        Persona
 
 
     }
 
-    public const Roles rol_predeterminado = Roles.Empleado;
+    public const Roles rol_predeterminado = Roles.Persona;
         
 }

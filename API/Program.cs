@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.ConfigureCors(); //Configura las Cors para los Endpoint
 builder.Services.AddApplicationServices(); //definir las interfaces y repositorios
+builder.Services.AddJwt(builder.Configuration); //definir los parametros del JWT para añadir 
 builder.Services.AddAutoMapper(Assembly.GetEntryAssembly()); //habilitar el AutoMapper
 
 //crear la conexion a la base de datos 
