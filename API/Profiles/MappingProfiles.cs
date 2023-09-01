@@ -20,5 +20,6 @@ public class MappingProfiles : Profile
         CreateMap<Salon, SalonDto>().ReverseMap();
         CreateMap<TipoPersona, TipoPersonaDto>().ReverseMap();
         CreateMap<TrainerSalon, TrainerSalonDto>().ReverseMap();
+        CreateMap<Rol, RolDTo>().ReverseMap();
     }
 }

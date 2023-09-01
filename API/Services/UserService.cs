@@ -124,9 +124,15 @@ public class UserService : IUserServiceInterface
         {
             datosUsuarioDto.Mensaje = "OK";
             datosUsuarioDto.EstaAutenticado = true;
+            //JwtSecurityToken jwtSecurityToken = CreateJwtToken(usuario);
+            //datosUsuarioDto.Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
             datosUsuarioDto.UserName = usuario.Username;
-            datosUsuarioDto.Email = usuario.Username;
+            datosUsuarioDto.Email = usuario.Email;
             datosUsuarioDto.Token = _jwtGenerador.CrearToken(usuario);
+            /*datosUsuarioDto.Roles = usuario.Roles
+                                                .Select(p => p.Nombre)
+                                                .ToList();*/
+           
             
             return datosUsuarioDto; 
         }
@@ -168,9 +174,9 @@ public class UserService : IUserServiceInterface
             signingCredentials : signingCredentials);
 
         return JwtSecurityToken;
-    }
+    }*/
 
-    public async Task<LoginDto>  UserLogin(LoginDto model)
+    /*public async Task<LoginDto>  UserLogin(LoginDto model)
     {
         var usuario = await _unitOfWork.Usuarios.GetByUsernameAsync(model.Username);
         var resultado = _passwordHasher.VerifyHashedPassword(usuario, usuario.Password, model.Password);
