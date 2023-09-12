@@ -18,9 +18,17 @@ public class UsuariosController : BaseApiController
         var result = await _userService.RegisterAsync(model);
         return Ok(result);
     }
-
+    
     [HttpPost("token")]
     public async Task<IActionResult> GetTokenAsync(LoginDto model)
+    {
+        var result = await _userService.GetTokenAsync(model);
+        return Ok(result);
+    }
+
+    //Obtener un nuevo token apartir del RefreshToken (Sobrecarga del metodo GetTokenAsync)
+    [HttpPost("refresh")]
+    public async Task<IActionResult> GetTokenAsync(AuthenticationTokenResultDto model)
     {
         var result = await _userService.GetTokenAsync(model);
         return Ok(result);

@@ -8,6 +8,10 @@ using Dominio.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Cryptography;
+using System.Collections.Concurrent;
+using Microsoft.AspNetCore.DataProtection;
+
 
 namespace API.Services;
 public class UserService : IUserServiceInterface
@@ -122,15 +126,22 @@ public class UserService : IUserServiceInterface
             datosUsuarioDto.Mensaje = "OK";
             datosUsuarioDto.EstaAutenticado = true;
             JwtSecurityToken jwtSecurityToken = CreateJwtToken(usuario);
-            datosUsuarioDto.Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
+            datosUsuarioDto.AccessToken = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
             datosUsuarioDto.UserName = usuario.Username;
             datosUsuarioDto.Email = usuario.Email;
             //datosUsuarioDto.Token = _jwtGenerador.CrearToken(usuario);
             datosUsuarioDto.Roles = usuario.Roles
                                                 .Select(p => p.Nombre)
                                                 .ToList();
-           
+
+            datosUsuarioDto.Expiry = DateTime.UtcNow.AddMinutes(_jwt.DurationInMinutes);
             
+            //Fomar 2 de obtener el refreshToken
+            datosUsuarioDto.RefreshToken = GenerateRefreshToken(usuario.Username).ToString("D");
+            
+            //Fomar 1 de obtener el refreshToken
+            //datosUsuarioDto.RefreshToken = RandomRefreshTokenString();
+
             return datosUsuarioDto; 
         }
 
@@ -141,8 +152,117 @@ public class UserService : IUserServiceInterface
 
     }
 
-    // los siguientes metodos no hacen parte de la Interfaz no son necesarios
+    //-------------------------------------------------------------------------------------------
+    //sonbrecarga del Metodo GetTokenAsync para obtener un nuevo Token de Acceso
+    public async Task<DatosUsuarioDto> GetTokenAsync(AuthenticationTokenResultDto model)
+    {
+        if (!IsValid(model, out string Username))
+        {
+            return null;
+        }
 
+        DatosUsuarioDto datosUsuarioDto = new DatosUsuarioDto();
+        var usuario = await _unitOfWork.Usuarios
+                                                .GetByUsernameAsync(Username);
+
+        if (usuario == null)
+        {
+            datosUsuarioDto.EstaAutenticado = false;
+            datosUsuarioDto.Mensaje = $"No existe ningun usuario con el username {Username}.";
+            return datosUsuarioDto;
+        }
+
+        datosUsuarioDto.Mensaje = "OK";
+        datosUsuarioDto.EstaAutenticado = true;
+        JwtSecurityToken jwtSecurityToken = CreateJwtToken(usuario);
+        datosUsuarioDto.AccessToken = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
+        datosUsuarioDto.UserName = usuario.Username;
+        datosUsuarioDto.Email = usuario.Email;
+        //datosUsuarioDto.Token = _jwtGenerador.CrearToken(usuario);
+        datosUsuarioDto.Roles = usuario.Roles
+                                            .Select(p => p.Nombre)
+                                            .ToList();
+
+        datosUsuarioDto.Expiry = DateTime.UtcNow.AddMinutes(_jwt.DurationInMinutes);
+        
+        //Fomar 2 de obtener el refreshToken
+        datosUsuarioDto.RefreshToken = GenerateRefreshToken(usuario.Username).ToString("D");
+        
+        //Fomar 1 de obtener el refreshToken
+        //datosUsuarioDto.RefreshToken = RandomRefreshTokenString();
+
+        return datosUsuarioDto; 
+    }
+
+    //para el nuevo token de acceso es necesario el nombre del ususario, para ello
+    //acontinuacion se estrae nombre del token de acceso, y se valida que el RefreshTken que se esta
+    //enviando sea el que se a generado.
+    private bool IsValid(AuthenticationTokenResultDto authResult, out string Username)
+    {
+        Username = string.Empty;
+
+        ClaimsPrincipal principal = GetPrincipalFromExpiredToken(authResult.AccessToken);
+
+        if (principal is null)
+        {
+            throw new UnauthorizedAccessException("No hay token de Acceso");
+        }
+
+        Username = principal.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (string.IsNullOrEmpty(Username))
+        {
+            throw new UnauthorizedAccessException("En UserName es nulo o esta vacio");
+        }
+
+        if (!Guid.TryParse(authResult.RefreshToken, out Guid givenRefreshToken))
+        {
+            throw new UnauthorizedAccessException("El Refresh Token esta mal formado");
+        }
+
+        if (!_refreshToken.TryGetValue(Username, out Guid currentRefreshToken))
+        {
+            throw new UnauthorizedAccessException("El Refresh Token no es valido en el sistema");
+        }
+
+        //se compara que los RefreshToquen sean identicos
+        if (currentRefreshToken != givenRefreshToken)
+        {
+            throw new UnauthorizedAccessException("El Refresh Token enviado es Invalido");
+        }
+
+        return true;
+    }
+
+    //validar el Token de Acceso
+    private ClaimsPrincipal GetPrincipalFromExpiredToken(string? accessToken)
+    {
+        TokenValidationParameters tokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = false,
+            ValidIssuer = _jwt.Issuer,
+            ValidAudience = _jwt.Audience,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwt.Key))
+        };
+
+        //se valida en Token
+        JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+        ClaimsPrincipal principal = tokenHandler.ValidateToken(accessToken, tokenValidationParameters, out SecurityToken securityToken);
+
+        if (securityToken is not JwtSecurityToken jwtSecurityToken || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256Signature, StringComparison.InvariantCulture))
+        {
+            throw new UnauthorizedAccessException("El token es Invalido");
+        }
+
+        return principal;
+    }
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+    //Metodo para generar el Access Token
     private JwtSecurityToken CreateJwtToken(Usuario usuario)
     {
         var roles = usuario.Roles;
@@ -173,6 +293,25 @@ public class UserService : IUserServiceInterface
         return JwtSecurityToken;
     }
 
+    //Forma 1 para generar el RefreshToken (para cualquier usuario)-----------------------------
+    private string RandomRefreshTokenString()
+    {
+        using var rngCryptoServiceProvider = RandomNumberGenerator.Create();
+        var randomBytes = new byte[64];
+        rngCryptoServiceProvider.GetBytes(randomBytes);
+        return BitConverter.ToString(randomBytes).Replace("-", "");
+    }
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    //Forma 2 para generar el RefreshToken (paraun un ususario determinado)---------------------
+    private static readonly ConcurrentDictionary<string, Guid> _refreshToken = new ConcurrentDictionary<string, Guid>();
+    private Guid GenerateRefreshToken(string username)
+    {
+        Guid newRefreshToken = _refreshToken.AddOrUpdate(username, u => Guid.NewGuid(), (u, o) => Guid.NewGuid());
+        return newRefreshToken;
+    }
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
     /*public async Task<LoginDto>  UserLogin(LoginDto model)
     {
         var usuario = await _unitOfWork.Usuarios.GetByUsernameAsync(model.Username);
@@ -184,5 +323,6 @@ public class UserService : IUserServiceInterface
         }
         return null;
     }*/
+
 
 }

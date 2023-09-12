@@ -100,3 +100,20 @@ C:\Users\APM01-62\Desktop\appAdministrarPeticiones\Persistencia\obj\Debug\net7.0
 C:\Users\APM01-62\Desktop\appAdministrarPeticiones\Persistencia\obj\Debug\net7.0\Persistencia.pdb
 C:\Users\APM01-62\Desktop\appAdministrarPeticiones\Persistencia\obj\Debug\net7.0\Persistencia.genruntimeconfig.cache
 C:\Users\APM01-62\Desktop\appAdministrarPeticiones\Persistencia\obj\Debug\net7.0\ref\Persistencia.dll
+C:\Users\Erik Mejia\Desktop\appAdministrarPeticiones\Persistencia\bin\Debug\net7.0\Persistencia.deps.json
+C:\Users\Erik Mejia\Desktop\appAdministrarPeticiones\Persistencia\bin\Debug\net7.0\Persistencia.runtimeconfig.json
+C:\Users\Erik Mejia\Desktop\appAdministrarPeticiones\Persistencia\bin\Debug\net7.0\Persistencia.dll
+C:\Users\Erik Mejia\Desktop\appAdministrarPeticiones\Persistencia\bin\Debug\net7.0\Persistencia.pdb
+C:\Users\Erik Mejia\Desktop\appAdministrarPeticiones\Persistencia\bin\Debug\net7.0\Dominio.dll
+C:\Users\Erik Mejia\Desktop\appAdministrarPeticiones\Persistencia\bin\Debug\net7.0\Dominio.pdb
+C:\Users\Erik Mejia\Desktop\appAdministrarPeticiones\Persistencia\obj\Debug\net7.0\Persistencia.csproj.AssemblyReference.cache
+C:\Users\Erik Mejia\Desktop\appAdministrarPeticiones\Persistencia\obj\Debug\net7.0\Persistencia.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Erik Mejia\Desktop\appAdministrarPeticiones\Persistencia\obj\Debug\net7.0\Persistencia.AssemblyInfoInputs.cache
+C:\Users\Erik Mejia\Desktop\appAdministrarPeticiones\Persistencia\obj\Debug\net7.0\Persistencia.AssemblyInfo.cs
+C:\Users\Erik Mejia\Desktop\appAdministrarPeticiones\Persistencia\obj\Debug\net7.0\Persistencia.csproj.CoreCompileInputs.cache
+C:\Users\Erik Mejia\Desktop\appAdministrarPeticiones\Persistencia\obj\Debug\net7.0\Persistencia.csproj.CopyComplete
+C:\Users\Erik Mejia\Desktop\appAdministrarPeticiones\Persistencia\obj\Debug\net7.0\Persistencia.dll
+C:\Users\Erik Mejia\Desktop\appAdministrarPeticiones\Persistencia\obj\Debug\net7.0\refint\Persistencia.dll
+C:\Users\Erik Mejia\Desktop\appAdministrarPeticiones\Persistencia\obj\Debug\net7.0\Persistencia.pdb
+C:\Users\Erik Mejia\Desktop\appAdministrarPeticiones\Persistencia\obj\Debug\net7.0\Persistencia.genruntimeconfig.cache
+C:\Users\Erik Mejia\Desktop\appAdministrarPeticiones\Persistencia\obj\Debug\net7.0\ref\Persistencia.dll

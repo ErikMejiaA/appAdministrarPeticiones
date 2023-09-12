@@ -5189,19 +5189,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
+    "C:\\Users\\Erik Mejia\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\appAdministrarPeticiones\\Persistencia\\Persistencia.csproj",
+      "projectUniqueName": "C:\\Users\\Erik Mejia\\Desktop\\appAdministrarPeticiones\\Persistencia\\Persistencia.csproj",
       "projectName": "Persistencia",
-      "projectPath": "C:\\Users\\Usuario\\Desktop\\appAdministrarPeticiones\\Persistencia\\Persistencia.csproj",
-      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Usuario\\Desktop\\appAdministrarPeticiones\\Persistencia\\obj\\",
+      "projectPath": "C:\\Users\\Erik Mejia\\Desktop\\appAdministrarPeticiones\\Persistencia\\Persistencia.csproj",
+      "packagesPath": "C:\\Users\\Erik Mejia\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Erik Mejia\\Desktop\\appAdministrarPeticiones\\Persistencia\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Erik Mejia\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -5213,8 +5213,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\Usuario\\Desktop\\appAdministrarPeticiones\\Dominio\\Dominio.csproj": {
-              "projectPath": "C:\\Users\\Usuario\\Desktop\\appAdministrarPeticiones\\Dominio\\Dominio.csproj"
+            "C:\\Users\\Erik Mejia\\Desktop\\appAdministrarPeticiones\\Dominio\\Dominio.csproj": {
+              "projectPath": "C:\\Users\\Erik Mejia\\Desktop\\appAdministrarPeticiones\\Dominio\\Dominio.csproj"
             }
           }
         }
@@ -5268,7 +5268,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
