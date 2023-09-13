@@ -4,4 +4,4 @@ Guia practica para aprender a crear un proyecto WebApi Usando .NetCore 7.0 y Mys
 
 Objetivo: Crear un WebApi;  que permita Administra las peticiones de las aplicaciones Front y Movil de un gestor de incidencias tecnologicas y administrativas de una organizacion.
 
-->
+https://docs.google.com/document/d/1vWQyCK82asdMd9uLIiW4l0ZVbdo4SampqdPkZl-sWos/edit
