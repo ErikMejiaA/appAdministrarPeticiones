@@ -286,9 +286,7 @@ C:/Users/APM01-62/Desktop/appAdministrarPeticiones/API/bin/Debug/net7.0/System.I
 C:/Users/APM01-62/Desktop/appAdministrarPeticiones/API/bin/Debug/net7.0/Aplicacion.dll
 C:/Users/APM01-62/Desktop/appAdministrarPeticiones/API/bin/Debug/net7.0/Dominio.dll
 C:/Users/APM01-62/Desktop/appAdministrarPeticiones/API/bin/Debug/net7.0/Persistencia.dll
-C:/Users/APM01-62/Desktop/appAdministrarPeticiones/API/bin/Debug/net7.0/Seguridad.dll
 C:/Users/APM01-62/Desktop/appAdministrarPeticiones/API/bin/Debug/net7.0/Aplicacion.pdb
-C:/Users/APM01-62/Desktop/appAdministrarPeticiones/API/bin/Debug/net7.0/Seguridad.pdb
 C:/Users/APM01-62/Desktop/appAdministrarPeticiones/API/bin/Debug/net7.0/Dominio.pdb
 C:/Users/APM01-62/Desktop/appAdministrarPeticiones/API/bin/Debug/net7.0/Persistencia.pdb
 C:/Users/APM01-62/Desktop/appAdministrarPeticiones/API/obj/Debug/net7.0/API.csproj.AssemblyReference.cache
@@ -439,9 +437,7 @@ C:\Users\APM01-62\Desktop\appAdministrarPeticiones\API\bin\Debug\net7.0\System.I
 C:\Users\APM01-62\Desktop\appAdministrarPeticiones\API\bin\Debug\net7.0\Aplicacion.dll
 C:\Users\APM01-62\Desktop\appAdministrarPeticiones\API\bin\Debug\net7.0\Dominio.dll
 C:\Users\APM01-62\Desktop\appAdministrarPeticiones\API\bin\Debug\net7.0\Persistencia.dll
-C:\Users\APM01-62\Desktop\appAdministrarPeticiones\API\bin\Debug\net7.0\Seguridad.dll
 C:\Users\APM01-62\Desktop\appAdministrarPeticiones\API\bin\Debug\net7.0\Aplicacion.pdb
-C:\Users\APM01-62\Desktop\appAdministrarPeticiones\API\bin\Debug\net7.0\Seguridad.pdb
 C:\Users\APM01-62\Desktop\appAdministrarPeticiones\API\bin\Debug\net7.0\Dominio.pdb
 C:\Users\APM01-62\Desktop\appAdministrarPeticiones\API\bin\Debug\net7.0\Persistencia.pdb
 C:\Users\APM01-62\Desktop\appAdministrarPeticiones\API\obj\Debug\net7.0\API.csproj.AssemblyReference.cache
